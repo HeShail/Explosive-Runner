@@ -47,6 +47,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float velCorrer;
         private float alturaSalto;
         public Animator animPJ;
+        public bool canMove;
         //private int armas = 1;
 
         // Use this for initialization
@@ -66,6 +67,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             velCaminar = m_WalkSpeed;
             velCorrer = m_RunSpeed;
             alturaSalto = m_JumpSpeed;
+            canMove = true;
         }
 
 
@@ -77,71 +79,33 @@ namespace UnityStandardAssets.Characters.FirstPerson
             #region UpdateControl
             RotateView();
             // the jump state needs to read here to make sure it is not missed
-            if (!m_Jump)
+            if (canMove)
             {
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-            }
+                if (!m_Jump)
+                {
+                    m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+                }
 
-            if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
-            {
-                StartCoroutine(m_JumpBob.DoBobCycle());
-                PlayLandingSound();
-                m_MoveDir.y = 0f;
-                m_Jumping = false;
-            }
-            if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
-            {
-                m_MoveDir.y = 0f;
-            }
+                if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
+                {
+                    StartCoroutine(m_JumpBob.DoBobCycle());
+                    PlayLandingSound();
+                    m_MoveDir.y = 0f;
+                    m_Jumping = false;
+                }
+                if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
+                {
+                    m_MoveDir.y = 0f;
+                }
 
-            m_PreviouslyGrounded = m_CharacterController.isGrounded;
+                m_PreviouslyGrounded = m_CharacterController.isGrounded;
+            }
+            
             #endregion
 
 
         }
-
-        /*
-        public void MostrarCooldown()
-        {
-            cooldown = GameObject.Find("COOL");
-            cool = cooldown.GetComponent<TextMeshProUGUI>();
-            if (recargaSAB1 <= 0) cool.text = " Arma lista.";
-            else {
-                cool.text = recargaSAB1 + "s de enfriamiento.";
-            } 
-        }
         
-            private void CambioArma()
-        {
-            if (Input.GetAxis("Mouse ScrollWheel") > 0f)
-            {
-                if (armaEquipada < armas - 1)
-                {
-                    armaEquipada++;
-                }
-                else
-                {
-                    armaEquipada = 0;
-                }
-            
-            
-
-
-            //Controlamos el equipamiento en la vertical inferior.
-            if (Input.GetAxis("Mouse ScrollWheel") < 0f)
-            {
-                if (armaEquipada <= 0)
-                {
-                    armaEquipada = armas - 1;
-                }
-                else
-                {
-                    armaEquipada--;
-                }
-
-            }
-        } */
-
         #region FPSController
         private void PlayLandingSound()
         {
@@ -167,24 +131,27 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MoveDir.x = desiredMove.x*speed;
             m_MoveDir.z = desiredMove.z*speed;
 
-
-            if (m_CharacterController.isGrounded)
+            if (canMove)
             {
-                m_MoveDir.y = -m_StickToGroundForce;
 
-                if (m_Jump)
+                if (m_CharacterController.isGrounded)
                 {
-                    m_MoveDir.y = m_JumpSpeed;
-                    PlayJumpSound();
-                    m_Jump = false;
-                    m_Jumping = true;
+                    m_MoveDir.y = -m_StickToGroundForce;
+
+                    if (m_Jump)
+                    {
+                        m_MoveDir.y = m_JumpSpeed;
+                        PlayJumpSound();
+                        m_Jump = false;
+                        m_Jumping = true;
+                    }
                 }
+                else
+                {
+                    m_MoveDir += Physics.gravity * m_GravityMultiplier * Time.fixedDeltaTime;
+                }
+                m_CollisionFlags = m_CharacterController.Move(m_MoveDir * Time.fixedDeltaTime);
             }
-            else
-            {
-                m_MoveDir += Physics.gravity*m_GravityMultiplier*Time.fixedDeltaTime;
-            }
-            m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
 
             ProgressStepCycle(speed);
             UpdateCameraPosition(speed);
