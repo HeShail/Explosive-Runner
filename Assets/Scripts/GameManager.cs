@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
             string minutos = 0.ToString();
             string segundos = 0.ToString();
             textoContrarreloj.text = minutos + ":" + segundos;
-            SceneManager.LoadScene(3);
+            //SceneManager.LoadScene(3);
 
         }
         else

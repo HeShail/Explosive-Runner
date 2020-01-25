@@ -25,7 +25,7 @@ public class Respawner : MonoBehaviour
     public void Respawnear()
     {
         fundido.GetComponent<Animator>().SetTrigger("respawn");
-        Invoke("Relocate", 1.5f);
+        Invoke("Relocate", 1f);
         player.GetComponent<CharacterController>().enabled = false;
         player.GetComponent<FirstPersonController>().canMove = false;
     }
@@ -34,7 +34,13 @@ public class Respawner : MonoBehaviour
     private void Relocate()
     {
         player.transform.position = respawnActual.position;
+        player.transform.rotation = respawnActual.rotation;
         player.GetComponent<CharacterController>().enabled = true;
         player.GetComponent<FirstPersonController>().canMove = true;
+    }
+
+    public void SetRespawn(Transform newRespawn)
+    {
+        respawnActual = newRespawn;
     }
 }

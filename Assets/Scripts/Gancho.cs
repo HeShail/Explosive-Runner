@@ -21,11 +21,11 @@ public class Gancho : MonoBehaviour
     private FirstPersonController fpc;
     private LineRenderer LR;
     private float grapCool;
+
     void Start()
     {
         enganchado = false;
         nuevaPosicion = GetComponentInParent<FirstPersonController>().transform.position;
-
         controlPadre = GetComponentInParent<CharacterController>();
         fpc = GetComponentInParent<FirstPersonController>();
         LR = GetComponentInParent<LineRenderer>();
@@ -33,10 +33,11 @@ public class Gancho : MonoBehaviour
         grapCool = 0;
         
     }
+    
 
-    // Update is called once per frame
     void Update()
     {
+
         //Consultamos el tiempo de enfriamiento del gancho para poder usarlo (así prevenimos fallos de colisiones en el punto de enganche).
         if (grapCool < 0f)
         {
@@ -75,7 +76,7 @@ public class Gancho : MonoBehaviour
         }
 
        //Si se encuentra a la distancia de una unidad con el elemento de enganche, finaliza el trayecto y se desbloquean los controladores de "FPController" y "Character Controller". 
-       //canMove es un boolean creado en el script FPController con la finalidad de intervenir en la actividad del controlador y así permitirnos movernos con el gancho sin procedimientos disruptores.
+       //canMove es un boolean creado en el script FPController con la finalidad de intervenir en la actividad del controlador y así permitirnos movernos con el gancho sin procedimientos paralelos disruptores.
         if (Vector3.Distance(GetComponentInParent<CharacterController>().transform.position, childPos) <= 1f)
         {
             enganchado = false;

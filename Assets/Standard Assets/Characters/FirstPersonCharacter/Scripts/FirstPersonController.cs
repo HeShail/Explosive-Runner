@@ -78,9 +78,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             #region UpdateControl
             RotateView();
-            // the jump state needs to read here to make sure it is not missed
+
+
+            if ((m_CharacterController.isGrounded)&&(Input.GetKey(KeyCode.LeftControl)))
+            {
+                animPJ.SetBool("agachado", true);
+            }else animPJ.SetBool("agachado", false);
+
+
             if (canMove)
             {
+                
                 if (!m_Jump)
                 {
                     m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
@@ -259,7 +267,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
 
-
+        public void SetCameraRot(Transform nueva)
+        {
+            m_Camera.transform.rotation = nueva.rotation;
+        }
         private void RotateView()
         {
             m_MouseLook.LookRotation (transform, m_Camera.transform);
