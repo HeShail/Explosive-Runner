@@ -67,10 +67,12 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Gancho.cs" />
     <Compile Include="Assets\Scripts\GenerateDiabolicElement.cs" />
+    <Compile Include="Assets\Scripts\JumpBoost.cs" />
     <Compile Include="Assets\Scripts\Plataforma Movil\Emparentar_a_plataforma.cs" />
     <Compile Include="Assets\Scripts\Plataforma Movil\Platform_Move.cs" />
     <Compile Include="Assets\Scripts\Respawner.cs" />
     <Compile Include="Assets\Scripts\RunningWall.cs" />
+    <Compile Include="Assets\Scripts\SpeedUp.cs" />
     <Compile Include="Assets\Scripts\UnlockRespawn.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class GameManager : MonoBehaviour
 {
-
+    public GameObject derrota;
     private GameObject temporizador;
     private float tiempoCambioEscena;
     private float t;
+    private GameManager GM;
     private float temporizadorNivel = 80f;
     private TextMeshProUGUI textoContrarreloj;
     private float startTime;
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         startTime = 0;
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -38,7 +40,9 @@ public class GameManager : MonoBehaviour
             string minutos = 0.ToString();
             string segundos = 0.ToString();
             textoContrarreloj.text = minutos + ":" + segundos;
-            //SceneManager.LoadScene(3);
+            derrota.GetComponent<TextMeshProUGUI>().text = "DERROTA";
+            derrota.GetComponent<Animator>().SetTrigger("aparecer");
+            GM.Invoke("ReloadScene", 3f);
 
         }
         else
@@ -47,6 +51,11 @@ public class GameManager : MonoBehaviour
             string segundos = ((int)t % 60).ToString();
             textoContrarreloj.text = minutos + ":" + segundos;
         }
+    }
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(0);
     }
 
 }

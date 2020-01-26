@@ -43,8 +43,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private AudioSource m_AudioSource;
         
         public float timetoSpawn;
-        private float velCaminar;
-        private float velCorrer;
         private float alturaSalto;
         public Animator animPJ;
         public bool canMove;
@@ -63,9 +61,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
-
-            velCaminar = m_WalkSpeed;
-            velCorrer = m_RunSpeed;
+            
             alturaSalto = m_JumpSpeed;
             canMove = true;
         }
@@ -113,7 +109,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
         }
-        
+
+        //Activa el boost de velocidad.
+        public void SetBoost()
+        {
+            gameObject.GetComponent<Animator>().SetTrigger("boost");
+        }
+
+        //Activa el boost de salto.
+        public void SetJumpBoost()
+        {
+            gameObject.GetComponent<Animator>().SetTrigger("boostSalto");
+        }
+
         #region FPSController
         private void PlayLandingSound()
         {
