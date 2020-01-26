@@ -537,7 +537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899eaa7c75e74344d94d88cb6ad6b8bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioEsfera: 3
+  radioEsfera: 5
   distMax: 25
   layer:
     serializedVersion: 2

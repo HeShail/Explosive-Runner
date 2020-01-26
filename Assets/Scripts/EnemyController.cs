@@ -6,8 +6,11 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class EnemyController : MonoBehaviour
 {
+    public GameObject explosionPrefab;
     private Transform target;
     private NavMeshAgent agent;
+    private float radius = 10;
+    private float power = 10000;
     public float time;
     // Start is called before the first frame update
     void Start()
@@ -22,7 +25,9 @@ public class EnemyController : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").transform;
         if (Vector3.Distance(transform.position, target.position) <= 2f)
         {
-            target.GetComponent<Respawner>().Respawnear();
+
+            Instantiate(explosionPrefab, gameObject.transform.position, Quaternion.identity);
+            target.GetComponent<Respawner>().Invoke("Respawnear", 1f);
             Destroy(this.gameObject);
         }
         if ((target != null) && (agent.enabled == true)) agent.destination = target.position;
