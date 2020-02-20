@@ -2485,7 +2485,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Plataformas explosivaws \n(No las pises!)"
+  m_text: "Plataformas explosivas \n(No las pises!)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6150b3e1a3b8b9d47bd4455c52d2e1d0, type: 2}
   m_sharedMaterial: {fileID: -9083552158380878066, guid: 6150b3e1a3b8b9d47bd4455c52d2e1d0,
@@ -2514,7 +2514,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 39.95
+  m_fontSize: 41.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2555,7 +2555,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 230396501}
-    characterCount: 40
+    characterCount: 39
     spriteCount: 0
     spaceCount: 5
     wordCount: 5
@@ -5182,6 +5182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1083356908889451983, guid: da206d6cf37208049946e1d8ca7f86cd,
     type: 3}
+  poolScript: {fileID: 760601414}
 --- !u!65 &540217755
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5242,6 +5243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1083356908889451983, guid: da206d6cf37208049946e1d8ca7f86cd,
     type: 3}
+  poolScript: {fileID: 760601414}
 --- !u!65 &557221878
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5302,6 +5304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1083356908889451983, guid: da206d6cf37208049946e1d8ca7f86cd,
     type: 3}
+  poolScript: {fileID: 760601414}
 --- !u!65 &564135871
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6330,6 +6333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1083356908889451983, guid: da206d6cf37208049946e1d8ca7f86cd,
     type: 3}
+  poolScript: {fileID: 760601414}
 --- !u!65 &744815037
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6445,6 +6449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 760601412}
   - component: {fileID: 760601411}
+  - component: {fileID: 760601414}
   - component: {fileID: 760601413}
   m_Layer: 0
   m_Name: GameManager
@@ -6576,6 +6581,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &760601414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760601410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15665cf83579f0f4e906780ad24cd1bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  terroristPrefab: {fileID: 1083356908889451983, guid: da206d6cf37208049946e1d8ca7f86cd,
+    type: 3}
+  poolSize: 4
 --- !u!4 &778671453 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8984831328986762127, guid: f5da1f9cf3e0c4a4a82d898f9e6d27f7,
@@ -6636,7 +6656,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 793744299}
   m_LocalRotation: {x: -0, y: 0.9914449, z: -0, w: 0.13052654}
-  m_LocalPosition: {x: -0.75, y: 1.17, z: -7.49}
+  m_LocalPosition: {x: -0.764, y: 2.299, z: -7.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 744815035}
@@ -12578,6 +12598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1083356908889451983, guid: da206d6cf37208049946e1d8ca7f86cd,
     type: 3}
+  poolScript: {fileID: 760601414}
 --- !u!65 &1016944950
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21938,6 +21959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1083356908889451983, guid: da206d6cf37208049946e1d8ca7f86cd,
     type: 3}
+  poolScript: {fileID: 760601414}
 --- !u!65 &1709928206
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24926,6 +24948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1083356908889451983, guid: da206d6cf37208049946e1d8ca7f86cd,
     type: 3}
+  poolScript: {fileID: 760601414}
 --- !u!65 &2100382303
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 public class GenerateDiabolicElement : MonoBehaviour
 {
     public GameObject enemyPrefab;
+    public EnemyPoolManager poolScript;
     private bool activado;
 
     void Start()
@@ -15,7 +16,8 @@ public class GenerateDiabolicElement : MonoBehaviour
 
     public void Discharge()
     {
-        Instantiate(enemyPrefab, this.gameObject.transform.GetChild(0).position, Quaternion.identity);
+        poolScript.GetEnemyFromPool(gameObject.transform.GetChild(0).position, Quaternion.identity);
+        
     }
 
 

@@ -16,11 +16,6 @@ public class Respawner : MonoBehaviour
         respawnActual = GameObject.Find("Respawn0").transform;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     //Activa la animación de fundido del canvas e invoca en un tiempo determinado la función para trasladar la posición del jugador. 
     public void Respawnear()
     {
